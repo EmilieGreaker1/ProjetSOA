@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   
   <properties>
-  	<java.version>11</java.version>
+  	<java.version>21</java.version>
   </properties>
   
   <dependencies>
@@ -15,4 +15,23 @@
   		<version>2.3.3</version>
   	</dependency>
   </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Plugin para ejecutar la clase principal -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <mainClass>fr.insa.soap.SignUpApplication</mainClass> <!-- Cambia esto por el nombre completo de tu clase principal -->
+                    <arguments>
+                        <argument>--add-opens=java.base/jdk.internal.misc=ALL-UNNAMED</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
+
