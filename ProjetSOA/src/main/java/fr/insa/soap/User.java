@@ -34,4 +34,8 @@ public class User {
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
+	
+	public String getUserId() {
+		return this.userId;
+	}
 }
