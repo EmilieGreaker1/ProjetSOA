@@ -1,20 +1,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>fr.insa.ws.soap</groupId>
-  <artifactId>ProjetSOA</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  
-  <properties>
-  	<java.version>21</java.version>
-  </properties>
-  
-  <dependencies>
-  	<dependency>
-  		<groupId>com.sun.xml.ws</groupId>
-  		<artifactId>jaxws-rt</artifactId>
-  		<version>2.3.3</version>
-  	</dependency>
-  </dependencies>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>fr.insa.ws.soap</groupId>
+    <artifactId>ProjetSOA</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <properties>
+        <java.version>17</java.version>
+        <cxf.version>3.4.2</cxf.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-rt</artifactId>
+            <version>2.3.3</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -24,14 +25,40 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
-                    <mainClass>fr.insa.soap.SignUpApplication</mainClass> <!-- Cambia esto por el nombre completo de tu clase principal -->
+                    <mainClass>fr.insa.soap.SignUpApplication</mainClass>
                     <arguments>
                         <argument>--add-opens=java.base/jdk.internal.misc=ALL-UNNAMED</argument>
                     </arguments>
                 </configuration>
             </plugin>
+
+            <!-- Plugin para generar clases a partir de WSDL -->
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>${cxf.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                        <configuration>
+                            <sourceRoot>${project.build.directory}/generated-sources/cxf</sourceRoot>
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <wsdl>${project.basedir}/src/main/resources/wsdl/analyzer.wsdl</wsdl>
+                                    <packagenames>
+                                        <packagename>fr.insa.soap.wsdltojava</packagename>
+                                    </packagenames>
+                                </wsdlOption>
+                            </wsdlOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
 </project>
-
