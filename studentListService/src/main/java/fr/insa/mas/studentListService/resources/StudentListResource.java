@@ -3,6 +3,7 @@ package fr.insa.mas.studentListService.resources;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,9 @@ import fr.insa.mas.studentListService.model.*;
 @RestController
 @RequestMapping("/students")
 public class StudentListResource {
+	
+	@Autowired
+	private RestTemplate restTemplate;
 
 	@GetMapping("ids/{idSpeciality}")
 	public StudentIDList getIDStudents(@PathVariable("idSpeciality") String speciality) {
@@ -38,18 +42,16 @@ public class StudentListResource {
 		students.addStudentToList(2);
 		students.addStudentToList(3);
 		
-		//Instanciate RestTemplate for Rest calls
-		RestTemplate restTemplate = new RestTemplate();
 		int i = 0;
 		List<Student> listStudents = new ArrayList<Student>();
 		
 		while (i<students.getStudentList().size()) {
 			//Call the MS to get student's information
 			//The result is deserialized into StudentInfos java object
-			StudentInfos etudInfos = restTemplate.getForObject("http://localhost:8081/student/" + i, StudentInfos.class);
+			StudentInfos etudInfos = restTemplate.getForObject("http://studentInfoService/student/" + i, StudentInfos.class);
 			//Call the MS to get student's evaluation
 			//The result is deserialized into Evaluation java object
-			Evaluation eval = restTemplate.getForObject("http://localhost:8082/evaluation/" + i, Evaluation.class);
+			Evaluation eval = restTemplate.getForObject("http://studentEvalService/evaluation/" + i, Evaluation.class);
 			//Instanciate a student with his id, first name, last name, average and store it in the list
 			listStudents.add(new Student(i,etudInfos.getFirstName(),etudInfos.getLastName(),eval.getAverage()));
 			i++;
