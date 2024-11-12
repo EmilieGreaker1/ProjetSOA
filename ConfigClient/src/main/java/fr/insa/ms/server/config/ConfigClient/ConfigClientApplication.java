@@ -1,13 +1,13 @@
-package fr.insa.mas.msDiscovery;
+package fr.insa.ms.server.config.ConfigClient;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MsDiscoveryApplication {
+public class ConfigClientApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MsDiscoveryApplication.class, args);
+		SpringApplication.run(ConfigClientApplication.class, args);
 	}
 
 }
