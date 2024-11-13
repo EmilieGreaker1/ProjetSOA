@@ -1,1 +1,13 @@
 /.metadata/
+ConfigClient/.project
+ConfigServer/.project
+msDiscovery/.project
+studentEvalService/.project
+studentListService/.project
+studentInfoService/.project
+ConfigClient/bin/.project
+ConfigServer/bin/.project
+msDiscovery/bin/.project
+studentEvalService/bin/.project
+studentInfoService/bin/.project
+studentListService/bin/.project

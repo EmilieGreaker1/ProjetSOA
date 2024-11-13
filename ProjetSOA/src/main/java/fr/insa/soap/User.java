@@ -9,13 +9,10 @@ import javax.xml.bind.annotation.XmlAccessType;
 public class User {
 	private String userId;
 	private String password;
-	private String lastName;
-	private String firstName;
-	private String userType;
 	
 	public User() {
-		this.userId = "nothing";
-        this.password = "nothingPassword";
+		this.userId = "Greaker";
+        this.password = "secret";
 	}
 	
 	public User(String userId, String password) {
@@ -23,19 +20,19 @@ public class User {
         this.password = password;
     }
 	
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	
-	public void setUserType(String userType) {
-		this.userType = userType;
-	}
-	
 	public String getUserId() {
 		return this.userId;
+	}
+	
+	public String getPassword() {
+		return this.userId;
+	}
+	
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

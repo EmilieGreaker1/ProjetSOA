@@ -10,9 +10,8 @@ public class LogInWS {
 	public User getUser(@WebParam(name="userId") String userId, @WebParam(name="password") String password) {
 		User thisUser = new User(userId, password);
 		
-		thisUser.setLastName("testLN");
-		thisUser.setFirstName("testFN");
-		thisUser.setUserType("testUT");
+		thisUser.setUserId("GRE_ID");
+		thisUser.setPassword("new_secret");
 		
 		return thisUser;
 	}
