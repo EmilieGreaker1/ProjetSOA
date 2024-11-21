@@ -1,35 +1,32 @@
-Project README
+# **Project Setup Guide**
 
-Frontend and Backend Setup Instructions
+This README explains how to set up and run both the frontend and backend of the project. The instructions include options for running the microservices and the frontend application.
 
-This guide explains how to set up and run both the frontend and backend for the project. Each has two execution options based on your development preferences.
+---
 
-Backend: Running Microservices
+## **Backend: Running Microservices**
 
-Prerequisites
+### **Prerequisites**
+- **Java JDK**: Version 17 or later.
+- **Maven**: Installed and added to your `PATH`.
 
-	•	Ensure you have Java JDK 17 or later installed.
-	•	Ensure Maven is installed and added to your PATH.
+### **Steps**
 
-Steps
+1. **Navigate to the microservice folder:**
+   ```bash
+   cd <microservice-folder-name>
 
-	1.	Navigate to the microservice folder:
-
-cd <microservice-folder-name>
-
-
-	2.	Run the microservice using one of the two options:
-Option 1: Using mvn spring-boot:run (Development)
-
-	•	Run the command:
-
-mvn clean install
+2. **Run the microservice using one of the two options:**
+## **Option 1: Using mvn spring-boot:run (Development)**
+	
+### •	Run the following command:
+```bash
 mvn spring-boot:run
 
-	•	Pros:
-	•	Automatically rebuilds the code on changes.
-	•	Suitable for development.
- 
+
+	•	Advantages:
+	•	Automatically rebuilds the code upon changes.
+	•	Suitable for development environments.
 Option 2: Using java -jar (Production or Pre-built)
 
 	•	Build the application:
@@ -47,15 +44,16 @@ cd target
 java -jar <microservice-name>.jar
 
 
-	•	Pros:
-	•	Faster as it uses the pre-packaged application.
+	•	Advantages:
+	•	Faster execution as it uses the pre-packaged application.
 	•	Maven is not required at runtime.
 
 Frontend: Running the Application
 
 Prerequisites
 
-	•	Ensure Node.js and npm are installed. Check the versions:
+	•	Node.js and npm:
+	•	Verify installation by checking their versions:
 
 node -v
 npm -v
@@ -72,7 +70,7 @@ cd frontend
 	2.	Run the frontend using one of the two options:
 Option 1: Using http-server Globally Installed
 
-	•	Install http-server globally if not already installed:
+	•	Install http-server globally (if not already installed):
 
 npm install -g http-server
 
@@ -82,7 +80,7 @@ npm install -g http-server
 http-server -p 9090
 
 
-	•	Pros:
+	•	Advantages:
 	•	Quick to set up once globally installed.
 Option 2: Using npx http-server (Local or On-the-Fly)
 
@@ -91,19 +89,38 @@ Option 2: Using npx http-server (Local or On-the-Fly)
 npx http-server -p 9090
 
 
-	•	Pros:
+	•	Advantages:
 	•	No global installation required.
-	•	Ensures the use of a specific version of http-server.
+	•	Ensures you use a specific version of http-server.
 
 	3.	Access the frontend in your browser:
 	•	Open: http://localhost:9090
 
-Project Notes
+Default View Setup
 
-	•	Port Configuration:
-	•	The backend microservices may run on dynamic ports depending on the configuration server.
-	•	The frontend may use http://localhost:9090 or another specified port.
+To set a specific view (e.g., signup) as the default page:
+	1.	Modify the index.html file in the frontend/public directory:
+
+<script>
+    window.location.href = "./src/views/signup.html";
+</script>
+
+
+	2.	Ensure the path to signup.html matches your folder structure.
+
+Additional Notes
+
+	•	Dynamic Port Handling for Backend:
+	•	Backend microservices may run on dynamic ports determined by the configuration server.
+	•	Ensure the frontend fetches the correct backend port dynamically.
+	•	Frontend Port:
+	•	The frontend defaults to http://localhost:9090. If this port is busy, update the port in your http-server command.
 	•	Cache Issues:
-	•	If the frontend fails to load after updates, clear your browser cache or use a “hard refresh” (Ctrl + Shift + R or Cmd + Shift + R).
+	•	If the frontend doesn’t reflect changes:
+	•	Perform a “hard refresh” in your browser:
+	•	Windows/Linux: Ctrl + Shift + R
+	•	Mac: Cmd + Shift + R
+	•	Alternatively, clear your browser cache.
 
-With these instructions, you can seamlessly set up and run both the frontend and backend of the project!
+With these steps, you can set up and run the frontend and backend applications efficiently. Enjoy coding!
+
