@@ -1,4 +1,4 @@
-# **Project Setup Guide**
+**Project Setup Guide**
 
 This README explains how to set up and run both the frontend and backend of the project. The instructions include options for running the microservices and the frontend application.
 
