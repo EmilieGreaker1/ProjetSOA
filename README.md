@@ -17,9 +17,9 @@ This README explains how to set up and run both the frontend and backend of the 
    cd <microservice-folder-name>
 
 2. **Run the microservice using one of the two options:**
-## **Option 1: Using mvn spring-boot:run (Development)**
+#### **Option 1: Using mvn spring-boot:run (Development)**
 	
-### •	Run the following command:
+##### •	Run the following command:
 ```bash
 mvn spring-boot:run
 
