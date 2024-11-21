@@ -23,10 +23,10 @@ This README explains how to set up and run both the frontend and backend of the 
 ```bash
 mvn spring-boot:run
 
+##### Advantages:
+######	•	Automatically rebuilds the code upon changes.
+######	•	Suitable for development environments.
 
-	•	Advantages:
-	•	Automatically rebuilds the code upon changes.
-	•	Suitable for development environments.
 Option 2: Using java -jar (Production or Pre-built)
 
 	•	Build the application:
