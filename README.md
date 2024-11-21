@@ -20,8 +20,8 @@ This README explains how to set up and run both the frontend and backend of the 
 #### **Option 1: Using mvn spring-boot:run (Development)**
 	
 ##### •	Run the following command:
-```bash
-mvn spring-boot:run
+	```bash
+	mvn spring-boot:run
 
 ##### Advantages:
 ######	•	Automatically rebuilds the code upon changes.
