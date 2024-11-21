@@ -1,4 +1,4 @@
-package fr.insa.msa.msDiscovery;
+package fr.insa.ms.msDiscovery;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

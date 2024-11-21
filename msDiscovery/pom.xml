@@ -8,11 +8,11 @@
 		<version>3.4.0-RC1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>fr.insa.mas</groupId>
+	<groupId>fr.insa.ms</groupId>
 	<artifactId>msDiscovery</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>msDiscovery</name>
-	<description>Discovery server demo</description>
+	<description>Microservice msDiscovery Personnes Vulnérables - To discover all MS (EUREKA SERVER)</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -28,7 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
-		<spring-cloud.version>2024.0.0-M2</spring-cloud.version>
+		<spring-cloud.version>2024.0.0-RC1</spring-cloud.version>
 	</properties>
 	<dependencies>
 		<dependency>

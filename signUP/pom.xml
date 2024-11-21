@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>fr.insa.mas</groupId>
-	<artifactId>signUP</artifactId>
+	<artifactId>SignUpService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>signUP</name>
 	<description>Microservice SignUP App Personnes Vulnérables</description>
