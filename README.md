@@ -24,30 +24,29 @@ This README explains how to set up and run both the frontend and backend of the 
    	mvn spring-boot:run
 
 ##### Advantages:
-######	•	Automatically rebuilds the code upon changes.
-######	•	Suitable for development environments.
+###### •	Automatically rebuilds the code upon changes.
+###### •	Suitable for development environments.
 
 #### **Option 2: Using java -jar (Production or Pre-built)**
 
 ##### •	Build the application:
-
-mvn package
+	```bash
+	mvn package
 
 
 ##### •	Navigate to the target directory:
-
-cd target
+	```bash
+	cd target
 
 ##### •	Run the JAR file:
+	```bash
+	java -jar <microservice-name>.jar
 
-java -jar <microservice-name>.jar
+##### Advantages:
+###### •	Faster execution as it uses the pre-packaged application.
+###### •	Maven is not required at runtime.
 
-
-	•	Advantages:
-	•	Faster execution as it uses the pre-packaged application.
-	•	Maven is not required at runtime.
-
-Frontend: Running the Application
+## **Frontend: Running the Application**
 
 Prerequisites
 
