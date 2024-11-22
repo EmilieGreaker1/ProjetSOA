@@ -31,19 +31,16 @@ This README explains how to set up and run both the frontend and backend of the 
 ### **Option 2: Using java -jar (Production or Pre-built)**
 
 #### •	Build the application:
-	```
+
 	mvn package
-	```
 
 #### •	Navigate to the target directory:
-	```
+
 	cd target
- 	```
 
 #### •	Run the JAR file:
-	```
+
 	java -jar <microservice-name>.jar
- 	```
 
 #### Advantages:
 ##### •	Faster execution as it uses the pre-packaged application.
@@ -51,13 +48,12 @@ This README explains how to set up and run both the frontend and backend of the 
 
 # **Frontend: Running the Application**
 
->Prerequisites
+>## **Prerequisites**
+- **Node.js and npm**: Version 17 or later.
+- Verify installation by checking their versions:
 
-	•	Node.js and npm:
-	•	Verify installation by checking their versions:
-
-node -v
-npm -v
+	node -v
+	npm -v
 
 
 
