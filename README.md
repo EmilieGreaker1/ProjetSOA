@@ -98,18 +98,18 @@ Open: **http://localhost:9090**
 >## **Additional Notes**
 >
 > ## Dynamic Port Handling for Backend:
-> •	Backend microservices may run on dynamic ports determined by the configuration server.
-> •	Ensure the frontend fetches the correct backend port dynamically.
+> Backend microservices may run on dynamic ports determined by the configuration server.
+> Ensure the frontend fetches the correct backend port dynamically.
 > ## Frontend Port:
-> •	The frontend defaults to http://localhost:9090. If this port is busy, update the port in your http-server command.
+> The frontend defaults to http://localhost:9090. If this port is busy, update the port in your http-server command.
 > ## Cache Issues:
-> • If the frontend doesn’t reflect changes:
-> • Perform a “hard refresh” in your browser:
+>> If the frontend doesn’t reflect changes:
+>> Perform a “hard refresh” in your browser:
 > ```
-> • Windows/Linux: Ctrl + Shift + R
-> • Mac: Cmd + Shift + R
+> Windows/Linux: Ctrl + Shift + R
+> Mac: Cmd + Shift + R
 > ```
-> •	Alternatively, clear your browser cache.
+> Alternatively, clear your browser cache.
 
 
 
