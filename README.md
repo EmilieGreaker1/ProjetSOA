@@ -12,11 +12,11 @@ This README explains how to set up and run both the frontend and backend of the 
 
 ## **Steps**
 
-1. **Navigate to the microservice folder:**
+>1. **Navigate to the microservice folder:**
  ```
  cd <microservice-folder-name>
  ```
-2. **Run the microservice using one of the two options:**
+>2. **Run the microservice using one of the two options:**
 ### **Option 1: Using mvn spring-boot:run (Development)**
 	
 >#### •	Run the following command:
@@ -55,69 +55,56 @@ This README explains how to set up and run both the frontend and backend of the 
 	node -v
 	npm -v
 
+## **Steps**
+
+>1. **Navigate to the frontend folder:**
+
+	cd frontend
+
+>2. **Run the frontend using one of the two options:**
+### **Option 1: Using http-server Globally Installed**
+
+•	Install http-server globally (if not already installed):
+
+	npm install -g http-server
 
 
-Steps
+•	Start the server:
 
-	1.	Navigate to the frontend folder:
-
-cd frontend
+	http-server -p 9090
 
 
-	2.	Run the frontend using one of the two options:
-Option 1: Using http-server Globally Installed
+•	Advantages:
+•	Quick to set up once globally installed.
 
-	•	Install http-server globally (if not already installed):
+### **Option 2: Using npx http-server (Local or On-the-Fly)**
 
-npm install -g http-server
+•	Run the following command:
 
-
-	•	Start the server:
-
-http-server -p 9090
+	npx http-server -p 9090
 
 
-	•	Advantages:
-	•	Quick to set up once globally installed.
-Option 2: Using npx http-server (Local or On-the-Fly)
+•	Advantages:
+•	No global installation required.
+•	Ensures you use a specific version of http-server.
 
-	•	Run the following command:
-
-npx http-server -p 9090
-
-
-	•	Advantages:
-	•	No global installation required.
-	•	Ensures you use a specific version of http-server.
-
-	3.	Access the frontend in your browser:
-	•	Open: http://localhost:9090
-
-Default View Setup
-
-To set a specific view (e.g., signup) as the default page:
-	1.	Modify the index.html file in the frontend/public directory:
-
-<script>
-    window.location.href = "./src/views/signup.html";
-</script>
+>3. **Access the frontend in your browser:**
+•	Open: http://localhost:9090
 
 
-	2.	Ensure the path to signup.html matches your folder structure.
+>## **Additional Notes**
+>
+>	•	Dynamic Port Handling for Backend:
+>	•	Backend microservices may run on dynamic ports determined by the configuration server.
+>	•	Ensure the frontend fetches the correct backend port dynamically.
+>	•	Frontend Port:
+>	•	The frontend defaults to http://localhost:9090. If this port is busy, update the port in your http-server command.
+>	•	Cache Issues:
+>	•	If the frontend doesn’t reflect changes:
+>	•	Perform a “hard refresh” in your browser:
+>	•	Windows/Linux: Ctrl + Shift + R
+>	•	Mac: Cmd + Shift + R
+>	•	Alternatively, clear your browser cache.
 
-Additional Notes
 
-	•	Dynamic Port Handling for Backend:
-	•	Backend microservices may run on dynamic ports determined by the configuration server.
-	•	Ensure the frontend fetches the correct backend port dynamically.
-	•	Frontend Port:
-	•	The frontend defaults to http://localhost:9090. If this port is busy, update the port in your http-server command.
-	•	Cache Issues:
-	•	If the frontend doesn’t reflect changes:
-	•	Perform a “hard refresh” in your browser:
-	•	Windows/Linux: Ctrl + Shift + R
-	•	Mac: Cmd + Shift + R
-	•	Alternatively, clear your browser cache.
-
-With these steps, you can set up and run the frontend and backend applications efficiently. Enjoy coding!
 
