@@ -117,6 +117,7 @@ This README explains how to set up and run both the frontend and backend of the 
 
 ## 3. **Access the frontend in your browser:**
 Open: **http://localhost:9090**
+
 Repo ConfigServer: **https://github.com/EmilieGreaker1/ProjetSOA_Config.git**
 
 
