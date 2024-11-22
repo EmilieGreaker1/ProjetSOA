@@ -21,7 +21,7 @@ This README explains how to set up and run both the frontend and backend of the 
 	
 >#### •	Run the following command:
 	
->	mvn spring-boot:run
+>  mvn spring-boot:run
 	
 
 >#### Advantages:
