@@ -33,10 +33,12 @@ This README explains how to set up and run both the frontend and backend of the 
 > ```
 > mvn package
 > ```
+> 
 >#### •	Navigate to the target directory:
 > ```
 > cd target
 > ```
+> 
 >#### •	Run the JAR file:
 > ```
 > java -jar <microservice-name>.jar
@@ -70,7 +72,7 @@ This README explains how to set up and run both the frontend and backend of the 
 > ```
 > npm install -g http-server
 > ```
-
+> 
 >#### •	Start the server:
 > ```
 > http-server -p 9090
