@@ -75,7 +75,7 @@ This README explains how to set up and run both the frontend and backend of the 
 
 ## **Prerequisites**
 >**Node.js and npm**: Version 17 or later.
->Download: https://nodejs.org/en
+>- Download: https://nodejs.org/en
 >- Verify installation by checking their versions:
 > ```
 > node -v
