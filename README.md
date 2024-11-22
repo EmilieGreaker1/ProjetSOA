@@ -12,13 +12,13 @@ This README explains how to set up and run both the frontend and backend of the 
 
 ## **Steps**
 
-1. ## **Navigate to the microservice folder:**
+## 1. **Navigate to the microservice folder:**
 > ```
 > cd <microservice-folder-name>
 > ```
-2. ## **Run the microservice using one of the two options:**
+## 2. **Run the microservice using one of the two options:**
    
-### **Option 1: Using mvn spring-boot:run (Development)**
+#### **Option 1: Using mvn spring-boot:run (Development)**
 >#### •	Run the following command:
 > ```
 > mvn spring-boot:run
@@ -28,7 +28,7 @@ This README explains how to set up and run both the frontend and backend of the 
 >##### • Automatically rebuilds the code upon changes.
 >##### • Suitable for development environments.
 
-### **Option 2: Using java -jar (Production or Pre-built)**
+#### **Option 2: Using java -jar (Production or Pre-built)**
 >#### •	Build the application:
 > ```
 > mvn package
