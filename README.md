@@ -15,7 +15,23 @@ This README explains how to set up and run both the frontend and backend of the 
 >> source ~/.zshrc
 >> java -version
 >> ```
+>> **Ubuntu/Debian**
+>> ```
+>> sudo apt update
+>> sudo apt install openjdk-17-jdk
+>> java -version
+>> ```
 >- **Maven**: Installed and added to your `PATH`.
+>> **MacOs**
+>> ```
+>> brew install maven
+>> mvn -v
+>> ```
+>> **Ubuntu/Debian**
+>> ```
+>> sudo apt install maven
+>> mvn -v
+>> ```
 
 ## **Steps**
 
