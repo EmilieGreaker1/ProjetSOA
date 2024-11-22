@@ -8,6 +8,13 @@ This README explains how to set up and run both the frontend and backend of the 
 
 ## **Prerequisites**
 >- **Java JDK**: Version 17 or later.
+>> **MacOs**
+>> ```
+>> brew install openjdk@17
+>> echo 'export PATH="/usr/local/opt/openjdk@17/bin:$PATH"' >> ~/.zshrc
+>> source ~/.zshrc
+>> java -version
+>> ```
 >- **Maven**: Installed and added to your `PATH`.
 
 ## **Steps**
