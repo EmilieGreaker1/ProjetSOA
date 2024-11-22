@@ -48,48 +48,49 @@ This README explains how to set up and run both the frontend and backend of the 
 
 # **Frontend: Running the Application**
 
->## **Prerequisites**
-- **Node.js and npm**: Version 17 or later.
-- Verify installation by checking their versions:
-
-	node -v
-	npm -v
+## **Prerequisites**
+>- **Node.js and npm**: Version 17 or later.
+>- Verify installation by checking their versions:
+> ```
+> node -v
+> npm -v
+> ```
 
 ## **Steps**
 
->1. **Navigate to the frontend folder:**
+## 1. **Navigate to the frontend folder:**
+> ```
+> cd frontend
+> ```
 
-	cd frontend
+## 2. **Run the frontend using one of the two options:**
+#### **Option 1: Using http-server Globally Installed**
 
->2. **Run the frontend using one of the two options:**
-### **Option 1: Using http-server Globally Installed**
+>#### •	Install http-server globally (if not already installed):
+> ```
+> npm install -g http-server
+> ```
 
-•	Install http-server globally (if not already installed):
+>#### •	Start the server:
+> ```
+> http-server -p 9090
+> ```
+	
+>#### Advantages:
+>##### • Quick to set up once globally installed.
 
-	npm install -g http-server
+#### **Option 2: Using npx http-server (Local or On-the-Fly)**
+>#### •	Run the following command:
+> ```
+> npx http-server -p 9090
+> ```
+	
+>#### Advantages:
+>##### • No global installation required.
+>##### • Ensures you use a specific version of http-server.
 
-
-•	Start the server:
-
-	http-server -p 9090
-
-
-•	Advantages:
-•	Quick to set up once globally installed.
-
-### **Option 2: Using npx http-server (Local or On-the-Fly)**
-
-•	Run the following command:
-
-	npx http-server -p 9090
-
-
-•	Advantages:
-•	No global installation required.
-•	Ensures you use a specific version of http-server.
-
->3. **Access the frontend in your browser:**
-•	Open: http://localhost:9090
+## 3. **Access the frontend in your browser:**
+• Open: http://localhost:9090
 
 
 >## **Additional Notes**
