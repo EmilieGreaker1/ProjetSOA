@@ -7,7 +7,7 @@ This README explains how to set up and run both the frontend and backend of the 
 # **Backend: Running Microservices**
 
 ## **Prerequisites**
->- **Java JDK**: Version 17 or later.
+>**Java JDK**: Version 17 or later.
 >> **MacOs**
 >> ```
 >> brew install openjdk@17
@@ -21,7 +21,7 @@ This README explains how to set up and run both the frontend and backend of the 
 >> sudo apt install openjdk-17-jdk
 >> java -version
 >> ```
->- **Maven**: Installed and added to your `PATH`.
+>**Maven**: Installed and added to your `PATH`.
 >> **MacOs**
 >> ```
 >> brew install maven
@@ -74,7 +74,7 @@ This README explains how to set up and run both the frontend and backend of the 
 # **Frontend: Running the Application**
 
 ## **Prerequisites**
->- **Node.js and npm**: Version 17 or later.
+>**Node.js and npm**: Version 17 or later.
 >- Verify installation by checking their versions:
 > ```
 > node -v
