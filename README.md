@@ -6,9 +6,9 @@ This README explains how to set up and run both the frontend and backend of the 
 
 # **Backend: Running Microservices**
 
-## **Prerequisites**
-- **Java JDK**: Version 17 or later.
-- **Maven**: Installed and added to your `PATH`.
+>## **Prerequisites**
+>- **Java JDK**: Version 17 or later.
+>- **Maven**: Installed and added to your `PATH`.
 
 ## **Steps**
 
@@ -19,32 +19,32 @@ This README explains how to set up and run both the frontend and backend of the 
 2. **Run the microservice using one of the two options:**
 ### **Option 1: Using mvn spring-boot:run (Development)**
 	
-#### •	Run the following command:
+>#### •	Run the following command:
 	
 	mvn spring-boot:run
 	
 
-#### Advantages:
-##### •	Automatically rebuilds the code upon changes.
-##### •	Suitable for development environments.
+>#### Advantages:
+>##### •	Automatically rebuilds the code upon changes.
+>##### •	Suitable for development environments.
 
 ### **Option 2: Using java -jar (Production or Pre-built)**
 
-#### •	Build the application:
+>#### •	Build the application:
 
 	mvn package
 
-#### •	Navigate to the target directory:
+>#### •	Navigate to the target directory:
 
 	cd target
 
-#### •	Run the JAR file:
+>#### •	Run the JAR file:
 
 	java -jar <microservice-name>.jar
 
-#### Advantages:
-##### •	Faster execution as it uses the pre-packaged application.
-##### •	Maven is not required at runtime.
+>#### Advantages:
+>##### •	Faster execution as it uses the pre-packaged application.
+>##### •	Maven is not required at runtime.
 
 # **Frontend: Running the Application**
 
