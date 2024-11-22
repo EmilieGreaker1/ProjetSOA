@@ -10,12 +10,12 @@ This README explains how to set up and run both the frontend and backend of the 
 >- **Java JDK**: Version 17 or later.
 >- **Maven**: Installed and added to your `PATH`.
 
-## **Steps**
+>## **Steps**
 
 >1. **Navigate to the microservice folder:**
- ```
- cd <microservice-folder-name>
- ```
+> ```
+> cd <microservice-folder-name>
+> ```
 >2. **Run the microservice using one of the two options:**
 ### **Option 1: Using mvn spring-boot:run (Development)**
 	
