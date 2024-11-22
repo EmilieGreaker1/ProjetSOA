@@ -1,0 +1,25 @@
+.left-panel {
+    background-color: #008080;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-panel {
+    background-color: white;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+}
+
+.signup-title {
+    font-weight: bold;
+    font-size: 30px;
+}
