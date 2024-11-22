@@ -92,22 +92,24 @@ This README explains how to set up and run both the frontend and backend of the 
 >##### • Ensures you use a specific version of http-server.
 
 ## 3. **Access the frontend in your browser:**
-• Open: http://localhost:9090
+Open: **http://localhost:9090**
 
 
 >## **Additional Notes**
 >
->	•	Dynamic Port Handling for Backend:
->	•	Backend microservices may run on dynamic ports determined by the configuration server.
->	•	Ensure the frontend fetches the correct backend port dynamically.
->	•	Frontend Port:
->	•	The frontend defaults to http://localhost:9090. If this port is busy, update the port in your http-server command.
->	•	Cache Issues:
->	•	If the frontend doesn’t reflect changes:
->	•	Perform a “hard refresh” in your browser:
->	•	Windows/Linux: Ctrl + Shift + R
->	•	Mac: Cmd + Shift + R
->	•	Alternatively, clear your browser cache.
+> ## Dynamic Port Handling for Backend:
+> •	Backend microservices may run on dynamic ports determined by the configuration server.
+> •	Ensure the frontend fetches the correct backend port dynamically.
+> ## Frontend Port:
+> •	The frontend defaults to http://localhost:9090. If this port is busy, update the port in your http-server command.
+> ## Cache Issues:
+> • If the frontend doesn’t reflect changes:
+> • Perform a “hard refresh” in your browser:
+> ```
+> • Windows/Linux: Ctrl + Shift + R
+> • Mac: Cmd + Shift + R
+> ```
+> •	Alternatively, clear your browser cache.
 
 
 
