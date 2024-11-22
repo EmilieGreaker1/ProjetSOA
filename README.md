@@ -20,8 +20,9 @@ This README explains how to set up and run both the frontend and backend of the 
 ### **Option 1: Using mvn spring-boot:run (Development)**
 	
 #### •	Run the following command:
-   	```bash
-   	mvn spring-boot:run
+    ```
+    mvn spring-boot:run
+    ```
 
 #### Advantages:
 ##### •	Automatically rebuilds the code upon changes.
@@ -30,17 +31,19 @@ This README explains how to set up and run both the frontend and backend of the 
 ### **Option 2: Using java -jar (Production or Pre-built)**
 
 #### •	Build the application:
-	```bash
+	```
 	mvn package
-
+	```
 
 #### •	Navigate to the target directory:
-	```bash
+	```
 	cd target
+ 	```
 
 #### •	Run the JAR file:
-	```bash
+	```
 	java -jar <microservice-name>.jar
+ 	```
 
 #### Advantages:
 ##### •	Faster execution as it uses the pre-packaged application.
