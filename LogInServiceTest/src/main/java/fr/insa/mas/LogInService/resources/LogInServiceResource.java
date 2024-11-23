@@ -59,10 +59,9 @@ public class LogInServiceResource {
 		
 		// Get the user from the database based on name and password
 		try {
-			System.out.println(getDbUri() + getDbLogin());
-			connection = DriverManager.getConnection(getDbUri() + getDbLogin(), getDbLogin(), getDbPwd());
+			connection = DriverManager.getConnection(getDbUri(), getDbLogin(), getDbPwd());
 			Statement stmt = connection.createStatement(); 
-			ResultSet rs = stmt.executeQuery("select * from Accounts;");
+			ResultSet rs = stmt.executeQuery("select * from AccountInformation;");
 			
 			while(rs.next()) {
 				System.out.print(rs.getString(1));

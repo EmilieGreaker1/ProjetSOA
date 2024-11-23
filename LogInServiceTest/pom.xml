@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.0-RC1</version>
+			<version>3.4.0-RC1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>fr.insa.ms</groupId>
-	<artifactId>LogInService</artifactId>
+	<groupId>fr.insa.mas</groupId>
+	<artifactId>studentEvalService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>LogInService</name>
-	<description>Log in micro service</description>
+	<name>studentEvalService</name>
+	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -46,19 +46,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
-		<dependency>
-			 <groupId>junit</groupId>
-		    <artifactId>junit</artifactId>
-		    <version>4.13.2</version>
-		    <scope>test</scope>
-		 </dependency>
-		
-		<dependency>
-		    <groupId>mysql</groupId>
-		    <artifactId>mysql-connector-java</artifactId>
-		    <version>8.0.33</version>
-		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
@@ -81,6 +68,7 @@
 			</plugin>
 		</plugins>
 	</build>
+	
 	<repositories>
 		<repository>
 			<id>spring-milestones</id>
