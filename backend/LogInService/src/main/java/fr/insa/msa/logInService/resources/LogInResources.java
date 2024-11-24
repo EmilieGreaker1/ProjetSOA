@@ -54,8 +54,6 @@ public class LogInResources {
 			ResultSet rs = stmt.executeQuery("select * from Users;");
 			
 			while(rs.next()) {
-				System.out.println(rs.getInt(1));
-				System.out.println(rs.getString(7));
 				if (userID == rs.getInt(1) && pwd.equals(rs.getString(7))) {
 					return new User(userID, pwd, rs.getString(2), rs.getString(5), rs.getString(6), rs.getString(3), rs.getString(4));
 				}
