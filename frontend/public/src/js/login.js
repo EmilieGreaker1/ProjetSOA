@@ -21,10 +21,9 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         });
 
         if (response.ok) {
-            alert("Login successful!");
-            console.log(await response.json());
-
+            
             const jsonLoginResp = await response.json();
+            console.log(jsonLoginResp);
 
             if(jsonLoginResp.userId !== 0) {
                 alert("Login successful!");
