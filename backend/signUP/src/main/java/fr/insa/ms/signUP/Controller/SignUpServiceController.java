@@ -3,6 +3,7 @@ package fr.insa.ms.signUP.Controller;
 import fr.insa.ms.signUP.Entity.User;
 import fr.insa.ms.signUP.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import java.util.Map;
 import java.util.Objects;
 
 @RestController
+@CrossOrigin(origins = {"http://127.0.0.1:9090", "http://localhost:9090"})
 @RequestMapping("/users")
 public class SignUpServiceController {
 
@@ -34,7 +36,8 @@ public class SignUpServiceController {
     }
 
     // Method to ADD a new user
-    @CrossOrigin(origins = "http://localhost:9090")
+    // @CrossOrigin(origins = "http://localhost:9090")
+
     @PostMapping("/sign-up")
     public User addUser(@RequestBody User user) {
         return userService.createUser(user);

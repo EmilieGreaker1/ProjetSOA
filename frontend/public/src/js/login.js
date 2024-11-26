@@ -6,10 +6,10 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         password: document.getElementById("password").value
     };
 
-    if (!formData.email || !formData.password) {
-        alert("All fields must be filled out.");
-        return;
-    }
+  //  if (!formData.email || !formData.password) {
+  //      alert("All fields must be filled out.");
+   //     return;
+ //   }
 
     try {
         // Send GET request with the retrieved URL
