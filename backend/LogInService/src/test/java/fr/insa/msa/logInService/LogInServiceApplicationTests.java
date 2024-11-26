@@ -1,10 +1,10 @@
-package fr.insa.mas.studentEvalService;
+package fr.insa.msa.logInService;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class StudentEvalServiceApplicationTests {
+class LogInServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
