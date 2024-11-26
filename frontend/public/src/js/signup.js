@@ -51,3 +51,9 @@ document.getElementById("signupForm").addEventListener("submit", async function 
         alert("Something went wrong. Please try again.");
     }
 });
+
+/*
+* TODO
+*  MIRAR COMO QUITAR EL CORS POLICY PARA PODER ENVIAR PETICITONES DESDE EL FRONT
+*  - LINEA 4 NO ESTÁ ACCEDIENDO AL SERVIDOR
+* */

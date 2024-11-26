@@ -12,7 +12,8 @@ public class ConfigController {
     private String serverPort;
 
     //@CrossOrigin(origins = "http://localhost:63342")
-    @GetMapping("/config/server-port")
+    // @GetMapping("/config/server-port")client-service/dev
+    @GetMapping("/client-service/dev/server-port")
     public String getServerPort() {
         return serverPort;
     }

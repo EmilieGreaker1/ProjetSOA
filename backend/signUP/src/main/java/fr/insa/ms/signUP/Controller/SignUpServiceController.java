@@ -34,13 +34,21 @@ public class SignUpServiceController {
     }
 
     // Method to ADD a new user
-    @CrossOrigin(origins = "http://localhost:63342")
+    @CrossOrigin(origins = "http://localhost:9090")
     @PostMapping("/sign-up")
     public User addUser(@RequestBody User user) {
         return userService.createUser(user);
     }
 
+    @Value("${server.port}")
+    private String serverPort;
 
+    //@CrossOrigin(origins = "http://localhost:63342")
+    // @GetMapping("/config/server-port")client-service/dev
+    @GetMapping("/server-port")
+    public String getServerPort() {
+        return serverPort;
+    }
 
 
     // OTHERS METHODS
