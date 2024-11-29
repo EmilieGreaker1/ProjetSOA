@@ -1,10 +1,10 @@
-package fr.insa.ms.server.config.ConfigClient;
+package fr.insa.msa.OrchestrationService;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ConfigClientApplicationTests {
+class OrchestrationServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
