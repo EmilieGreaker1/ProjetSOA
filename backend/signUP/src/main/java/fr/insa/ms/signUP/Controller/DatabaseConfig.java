@@ -1,3 +1,5 @@
+package fr.insa.ms.signUP.Controller;
+
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

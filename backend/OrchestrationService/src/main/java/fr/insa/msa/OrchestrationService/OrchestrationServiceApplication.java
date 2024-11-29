@@ -1,4 +1,4 @@
-package fr.insa.ms.server.config.OrchestrationService;
+package fr.insa.msa.OrchestrationService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
