@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spontaneous Requests</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../src/css/app.css">
+</head>
+<body>
+<div class="container-fluid">
+  <!-- Menu Panel -->
+  <div class="row menu-panel">
+    <div class="col-12 text-center">
+      <h1 class="app-title-menu">VULNERABLES</h1>
+    </div>
+    <div class="col-12 text-start">
+      <h5 id="welcomeMessage" class="welcome-message">Welcome, Admin</h5>
+    </div>
+    <div class="col-12 d-flex justify-content-end">
+      <button id="homeButton" class="btn btn-secondary me-3" onclick="window.location.href='../views/AdmViewRequests.html';">Help Requests</button>
+      <button id="viewMySpontaneousButton" class="btn btn-secondary me-3" onclick="window.location.href='../views/AdmViewSpontaneous.html';">Spontaneous</button>
+      <button id="logOutButton" class="btn btn-secondary" onclick="window.location.href='../views/login.html';">LogOut</button>
+    </div>
+  </div>
+
+  <!-- Main Panels -->
+  <div class="row content-panels">
+    <!-- Left Panel -->
+    <div class="col-lg-6 left-panel-tables">
+      <h2 class="big-title">Pending Spontaneous Requests</h2>
+      <table id="requestsTable" class="table table-striped">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>VolunteerID</th>
+          <th>Accept</th>
+          <th>Reject</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="d-flex justify-content-between mt-3">
+        <button id="showRequestsButton" class="btn btn-primary">Show Waiting Spontaneous</button>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="col-lg-6 right-panel-tables">
+      <h2 class="big-title">All Spontaneous Requests</h2>
+      <table id="missionsTable" class="table table-striped">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../src/js/admin.js"></script>
+</body>
+</html>

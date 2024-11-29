@@ -46,20 +46,21 @@ document.getElementById("signupForm").addEventListener("submit", async function 
         });
 
         if (response.ok) {
-            alert("User registered successfully!");
-
-           // alert("Login successful!");
+            // alert("User registered successfully!");
 
             if(document.getElementById("userType").value === "Admin") {
-                alert("Redirecting admin...");
+                //alert("Redirecting admin...");
+                window.location.href = "../../views/AdmViewRequests.html";
             }
             else if(document.getElementById("userType").value === "Volunteer") {
-                alert("Redirecting volunteer...");
+                // alert("Redirecting volunteer...");
+                window.location.href = "../../views/VolMyMissions.html"; // Redirect to my Missions page
             }
             else {
-                alert("Redirecting other - Person in need...");
+                //alert("Redirecting other - Person in need...");
+                window.location.href = "../../views/UsrHelpRequest.html";
             }
-            window.location.href = "../views/myMissions.html"; // Redirect to my Missions page
+
         } else {
             const error = await response.json();
             console.error("Error:", error);

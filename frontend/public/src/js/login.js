@@ -26,20 +26,20 @@ document.getElementById("loginForm").addEventListener("submit", async function (
             console.log(jsonLoginResp);
 
             if(jsonLoginResp.userId !== 0) {
-                alert("Login successful!");
+                // alert("Login successful!");
 
-                if(jsonLoginResp.userType === "admin") {
-                    alert("Redirecting admin...");
+                if(document.getElementById("userType").value === "Admin") {
+                    //alert("Redirecting admin...");
+                    window.location.href = "../../views/AdmViewRequests.html";
                 }
-                else if(jsonLoginResp.userType === "Volunteer") {
-                    alert("Redirecting volunteer...");
+                else if(document.getElementById("userType").value === "Volunteer") {
+                    // alert("Redirecting volunteer...");
+                    window.location.href = "../../views/VolMyMissions.html"; // Redirect to my Missions page
                 }
                 else {
-                    alert("Redirecting other...");
+                    //alert("Redirecting other - Person in need...");
+                    window.location.href = "../../views/UsrHelpRequest.html";
                 }
-
-                // TODO Redirect to next page
-                //window.location.href = "../views/...";  
             }
             else {
                 alert("User does not exist, please try again");
