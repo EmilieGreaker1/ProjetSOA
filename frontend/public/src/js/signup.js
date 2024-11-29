@@ -1,9 +1,14 @@
 async function getBaseUrl() {
     try {
         // Fetch dynamic port from Config Server
-        const response = await fetch("http://localhost:8888/config/server-port");
+       //  const response = await fetch("http://localhost:8888/config/server-port");
+        const response = await fetch("http://localhost:8888/client-service/dev");
         if (response.ok) {
-            const port = await response.text(); // Get port as text
+            const data = await response.json(); // Parse JSON response
+            console.log("Full Config Data:", data); // Log full response for debugging
+
+            const port = data.propertySources[0].source["server.port"]; // Extract server.port
+            console.log(`Recovered port from Config Server: ${port}`); // Imprimir el puerto en consola
             return `http://localhost:${port}`; // Construct base URL
         } else {
             console.error("Error fetching server port:", response.status);
@@ -31,7 +36,8 @@ document.getElementById("signupForm").addEventListener("submit", async function 
         const baseUrl = await getBaseUrl();
 
         // Send POST request with the retrieved URL
-        const response = await fetch(`${baseUrl}/users/sign-up`, {
+        const response = await fetch(`${baseUrl}/signup`, {
+        // const response = await fetch(`http://localhost:8088/signup`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -41,10 +47,24 @@ document.getElementById("signupForm").addEventListener("submit", async function 
 
         if (response.ok) {
             alert("User registered successfully!");
-            window.location.href = "/login"; // Redirect to login page
+
+           // alert("Login successful!");
+
+            if(document.getElementById("userType").value === "Admin") {
+                alert("Redirecting admin...");
+            }
+            else if(document.getElementById("userType").value === "Volunteer") {
+                alert("Redirecting volunteer...");
+            }
+            else {
+                alert("Redirecting other - Person in need...");
+            }
+            window.location.href = "../views/myMissions.html"; // Redirect to my Missions page
         } else {
             const error = await response.json();
-            alert(`Error: ${error.message}`);
+            console.error("Error:", error);
+            alert("Please try again. Problem connecting with the server");
+           //  alert(`Error: ${error.message}`);
         }
     } catch (error) {
         console.error("Error:", error);
@@ -52,8 +72,3 @@ document.getElementById("signupForm").addEventListener("submit", async function 
     }
 });
 
-/*
-* TODO
-*  MIRAR COMO QUITAR EL CORS POLICY PARA PODER ENVIAR PETICITONES DESDE EL FRONT
-*  - LINEA 4 NO ESTÁ ACCEDIENDO AL SERVIDOR
-* */

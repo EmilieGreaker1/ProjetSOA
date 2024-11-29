@@ -14,10 +14,8 @@ import java.util.Map;
 import java.util.Objects;
 
 @RestController
-@CrossOrigin(origins = {"http://127.0.0.1:9090", "http://localhost:9090"})
-@RequestMapping("/users")
+// @CrossOrigin(origins = {"http://127.0.0.1:9090", "http://localhost:9090", "http://localhost:8888"})
 public class SignUpServiceController {
-
 
     @Autowired
     private final UserService userService;
@@ -36,9 +34,8 @@ public class SignUpServiceController {
     }
 
     // Method to ADD a new user
-    // @CrossOrigin(origins = "http://localhost:9090")
-
-    @PostMapping("/sign-up")
+    // @CrossOrigin(origins = {"http://127.0.0.1:9090", "http://localhost:9090", "http://localhost:8888"})
+    @PostMapping("/signup")
     public User addUser(@RequestBody User user) {
         return userService.createUser(user);
     }

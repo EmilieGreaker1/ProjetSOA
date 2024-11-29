@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = {"http://127.0.0.1:9090", "http://localhost:9090"})
+@CrossOrigin(origins = {"http://127.0.0.1:9090", "http://localhost:9090", "http://localhost:8888"})
 public class ConfigController {
 
     @Value("${server.port}")

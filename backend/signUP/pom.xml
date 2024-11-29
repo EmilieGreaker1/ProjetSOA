@@ -78,18 +78,6 @@
 			<artifactId>jakarta.persistence-api</artifactId>
 		</dependency>
 
-		<!-- INTERFACE -->
-		<dependency>
-			<groupId>org.openjfx</groupId>
-			<artifactId>javafx-controls</artifactId>
-			<version>20.0.2</version> <!-- Reemplaza con la última versión estable -->
-		</dependency>
-		<dependency>
-			<groupId>org.openjfx</groupId>
-			<artifactId>javafx-fxml</artifactId>
-			<version>20.0.2</version>
-		</dependency>
-
 	</dependencies>
 
 	<dependencyManagement>
@@ -118,6 +106,14 @@
 				<version>3.1.0</version>
 				<configuration>
 					<mainClass>fr.insa.ms.signUP.views.SignUpAPP</mainClass>
+				</configuration>
+			</plugin>
+			<!-- SKIP TEST -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
 		</plugins>

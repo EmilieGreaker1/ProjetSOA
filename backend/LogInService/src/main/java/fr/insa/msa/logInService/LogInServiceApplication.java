@@ -8,6 +8,7 @@ public class LogInServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(LogInServiceApplication.class, args);
+		System.out.println("LogIn Service Activated!");
 	}
 
 }
