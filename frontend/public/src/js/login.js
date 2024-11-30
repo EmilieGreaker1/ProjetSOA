@@ -6,11 +6,6 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         password: document.getElementById("password").value
     };
 
-  //  if (!formData.email || !formData.password) {
-  //      alert("All fields must be filled out.");
-   //     return;
- //   }
-
     try {
         // Send GET request with the retrieved URL
         const response = await fetch(`http://localhost:8090/login/` + formData.userid + "+" + formData.password, {
@@ -21,29 +16,24 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         });
 
         if (response.ok) {
-            
             const jsonLoginResp = await response.json();
             console.log(jsonLoginResp);
 
-            if(jsonLoginResp.userId !== 0) {
-                // alert("Login successful!");
+            // Usa el userType del servidor para decidir la redirección
+            const userType = jsonLoginResp.userType; // Asegúrate de que esta propiedad exista en la respuesta
 
-                if(document.getElementById("userType").value === "Admin") {
-                    //alert("Redirecting admin...");
+            if (jsonLoginResp.userId !== 0) {
+                if (userType === "Admin") {
                     window.location.href = "../../views/AdmViewRequests.html";
-                }
-                else if(document.getElementById("userType").value === "Volunteer") {
-                    // alert("Redirecting volunteer...");
-                    window.location.href = "../../views/VolMyMissions.html"; // Redirect to my Missions page
-                }
-                else {
-                    //alert("Redirecting other - Person in need...");
+                } else if (userType === "Volunteer") {
+                    window.location.href = "../../views/VolMyMissions.html";
+                } else {
                     window.location.href = "../../views/UsrHelpRequest.html";
                 }
-            }
-            else {
+            } else {
                 alert("User does not exist, please try again");
             }
+
         } else {
             const error = await response.json();
             alert(`Error: ${error.message || "Incorrect email or password"}`);

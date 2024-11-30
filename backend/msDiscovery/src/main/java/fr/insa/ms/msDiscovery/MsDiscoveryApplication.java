@@ -11,6 +11,7 @@ public class MsDiscoveryApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MsDiscoveryApplication.class, args);
+		System.out.println("Discovery Service Activated!");
 	}
 
 }

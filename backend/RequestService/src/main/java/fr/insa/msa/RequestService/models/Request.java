@@ -1,32 +1,36 @@
 package fr.insa.msa.RequestService.models;
 
+import java.util.Date;
 public class Request {
 	
 	private int id;
 	private int userId;
 	private int volunteerId;
-	private String text;
+	private String title;
+	private String description;
 	private String status;
 	private String adminComment;
-	private String time;
+	private Date date;
 	
 	public Request() {}
 	
-	public Request(int id, int userId, String text) {
+	public Request(int id, int userId, String title, String description) {
 		this.id = id;
         this.userId = userId;
-        this.text = text;
+		this.title = title;
+        this.description = description;
         this.status = "pendingAdmin";
     }
 	
-	public Request(int id, int userId, int volunteerId, String text, String status, String adminComment, String time) {
+	public Request(int id, int userId, int volunteerId, String title, String description, String status, String adminComment, Date date) {
         this.id = id;
         this.userId = userId;
         this.volunteerId = volunteerId;
-        this.text = text;
+		this.title = title;
+        this.description = description;
         this.status = status;
         this.adminComment = adminComment;
-        this.time = time;
+        this.date = date;
     }
 	
 	public int getId() {
@@ -40,9 +44,12 @@ public class Request {
 	public int getVolunteerId() {
 		return volunteerId;
 	}
-	
-	public String getText() {
-		return text;
+
+	public String getTitle() {
+		return title;
+	}
+	public String getDescription() {
+		return description;
 	}
 	
 	public String getStatus() {
@@ -53,8 +60,8 @@ public class Request {
 		return adminComment;
 	}
 	
-	public String getTime() {
-		return time;
+	public Date getDate() {
+		return date;
 	}
 	
 	public void setId(int id) {
@@ -68,9 +75,12 @@ public class Request {
 	public void setVolunteerId(int volunteerId) {
 		this.volunteerId = volunteerId;
 	}
-	
-	public void setText(String text) {
-		this.text = text;
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	public void setStatus(String status) {
@@ -81,7 +91,7 @@ public class Request {
 		this.adminComment = admComment;
 	}
 	
-	public void setTime(String time) {
-		this.time = time;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 }

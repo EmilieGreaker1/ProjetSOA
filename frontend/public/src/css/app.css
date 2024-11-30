@@ -48,7 +48,32 @@ body {
     background-color: #f0f0f0;
 }
 
-.left-panel-tables, .right-panel-tables {
+.left-panel-tables-admin {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow-x: auto; /* Habilita el scroll horizontal */
+    max-width: 100%; /* Asegura que el ancho no exceda el contenedor */
+    max-height: 500px; /* Altura máxima en píxeles para el scroll */
+    overflow-y: auto; /* Activa el scroll vertical */
+}
+
+#requestsTable-admin {
+    white-space: nowrap; /* Evita que el contenido de las celdas se ajuste a una nueva línea */
+    font-size: 14px; /* Ajusta el tamaño de la fuente para reducir el contenido */
+}
+
+.left-panel-tables {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-height: 500px; /* Altura máxima en píxeles para el scroll */
+    overflow-y: auto; /* Activa el scroll vertical */
+}
+
+.right-panel-tables {
     background-color: #f8f9fa;
     padding: 20px;
     border: 1px solid #ddd;

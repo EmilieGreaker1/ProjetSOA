@@ -1,8 +1,10 @@
+/*
 async function getBaseUrl() {
+
     try {
         // Fetch dynamic port from Config Server
        //  const response = await fetch("http://localhost:8888/config/server-port");
-        const response = await fetch("http://localhost:8888/client-service/dev");
+      //  const response = await fetch("http://localhost:8888/client-service/dev");
         if (response.ok) {
             const data = await response.json(); // Parse JSON response
             console.log("Full Config Data:", data); // Log full response for debugging
@@ -19,6 +21,7 @@ async function getBaseUrl() {
         return "http://localhost:8088"; // Default fallback value
     }
 }
+*/
 
 document.getElementById("signupForm").addEventListener("submit", async function (event) {
     event.preventDefault();
@@ -33,11 +36,11 @@ document.getElementById("signupForm").addEventListener("submit", async function 
 
     try {
         // Get the dynamic base URL
-        const baseUrl = await getBaseUrl();
+        // const baseUrl = await getBaseUrl();
 
         // Send POST request with the retrieved URL
-        const response = await fetch(`${baseUrl}/signup`, {
-        // const response = await fetch(`http://localhost:8088/signup`, {
+        //const response = await fetch(`${baseUrl}/signup`, {
+         const response = await fetch(`http://localhost:8088/signup`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -8,6 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.sql.PreparedStatement; // Import necesario
+import java.sql.Timestamp; // Para manejar fechas
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,7 +64,7 @@ public class SpontaneousHelpResources {
 			ResultSet rs = stmt.executeQuery("SELECT * FROM SpontaneousHelp WHERE id = '" + id + "';");
 			
 			while(rs.next()) {
-				spontHelp = new SpontaneousHelp(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+				spontHelp = new SpontaneousHelp(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getDate(8));
 			}
 				
 			connection.close();
@@ -85,7 +88,7 @@ public class SpontaneousHelpResources {
 			ResultSet rs = stmt.executeQuery("SELECT * FROM SpontaneousHelp WHERE userId = '" + userId + "';");
 			
 			while(rs.next()) {
-				spontHelpList.add(new SpontaneousHelp(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
+				spontHelpList.add(new SpontaneousHelp(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getDate(8)));
 			}
 			
 			connection.close();
@@ -106,10 +109,10 @@ public class SpontaneousHelpResources {
 		try {
 			Connection connection = DriverManager.getConnection(getDbUrl(), getDbUsername(), getDbPassword());
 			Statement stmt = connection.createStatement(); 
-			ResultSet rs = stmt.executeQuery("SELECT * FROM SpontaneousHelp WHERE volunteerId = '" + volunteerId + "';");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM SpontaneousHelp WHERE volunteerId = '" + volunteerId + "' AND status = 'CONFIRMED';");
 				
 			while(rs.next()) {
-				spontHelpList.add(new SpontaneousHelp(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
+				spontHelpList.add(new SpontaneousHelp(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getDate(8)));
 			}
 				
 			connection.close();
@@ -133,7 +136,7 @@ public class SpontaneousHelpResources {
 			ResultSet rs = stmt.executeQuery("SELECT * FROM SpontaneousHelp WHERE status = 'pendingAdmin';");
 			
 			while(rs.next()) {
-				spontHelpList.add(new SpontaneousHelp(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
+				spontHelpList.add(new SpontaneousHelp(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getDate(8)));
 			}
 			
 			connection.close();
@@ -154,10 +157,10 @@ public class SpontaneousHelpResources {
 		try {
 			Connection connection = DriverManager.getConnection(getDbUrl(), getDbUsername(), getDbPassword());
 			Statement stmt = connection.createStatement(); 
-			ResultSet rs = stmt.executeQuery("SELECT * FROM SpontaneousHelp WHERE status = 'accepted';");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM SpontaneousHelp WHERE status = 'CONFIRMED' AND volunteerId IS NULL;");
 				
 			while(rs.next()) {
-				spontHelpList.add(new SpontaneousHelp(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
+				spontHelpList.add(new SpontaneousHelp(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getDate(8)));
 			}
 				
 			connection.close();
@@ -172,11 +175,51 @@ public class SpontaneousHelpResources {
 	// Update a spontaneous help proposition
 	@PutMapping("/updateSpontHelp")
 	public void updateSpontaneousHelp(@RequestBody SpontaneousHelp spontHelp) {
+		try (Connection connection = DriverManager.getConnection(getDbUrl(), getDbUsername(), getDbPassword())) {
+			// Usa un PreparedStatement para evitar problemas de formato y SQL Injection
+			String sql = "UPDATE SpontaneousHelp SET title = ?, description = ?, status = ?, date = ? WHERE id = ?";
+			PreparedStatement stmt = connection.prepareStatement(sql);
+
+			// Configura los parámetros
+			stmt.setString(1, spontHelp.getTitle());
+			stmt.setString(2, spontHelp.getDescription());
+			stmt.setString(3, spontHelp.getStatus());
+
+			// Asegúrate de que la fecha sea un java.util.Date o java.sql.Timestamp
+			stmt.setTimestamp(4, new java.sql.Timestamp(spontHelp.getDate().getTime()));
+			stmt.setInt(5, spontHelp.getId());
+
+			// Ejecuta la actualización
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// Update spontHelp STATUS
+	@PutMapping("/updateStatus")
+	public void updateSpontaneousHelpStatus(@RequestBody SpontaneousHelp spontHelp) {
 		try {
 			Connection connection = DriverManager.getConnection(getDbUrl(), getDbUsername(), getDbPassword());
-			Statement stmt = connection.createStatement(); 
-			stmt.executeUpdate("UPDATE SpontaneousHelp SET userId = " + spontHelp.getUserId() + ", volunteerId = " + spontHelp.getVolunteerId() + ", text = '" + spontHelp.getText() + "', status = '" + spontHelp.getStatus() + "', adminComment = '" + spontHelp.getAdminComment() + "', time = '" + spontHelp.getTime() + "' WHERE id = " + spontHelp.getId() + ";");
-			
+			Statement stmt = connection.createStatement();
+			stmt.executeUpdate("UPDATE SpontaneousHelp SET status = '" + spontHelp.getStatus() + "', adminComment = '" + spontHelp.getAdminComment() + "' WHERE id = " + spontHelp.getId() + ";");
+
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	// Update spontHelp VOLUNTEER
+	@PutMapping("/updateVolunteer")
+	public void updateSpontaneousHelpVolunteer(@RequestBody SpontaneousHelp spontHelp) {
+		try {
+			Connection connection = DriverManager.getConnection(getDbUrl(), getDbUsername(), getDbPassword());
+			Statement stmt = connection.createStatement();
+			stmt.executeUpdate("UPDATE SpontaneousHelp SET volunteerId = '" + spontHelp.getVolunteerId() + "' WHERE id = " + spontHelp.getId() + ";");
+
 			connection.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -187,15 +230,28 @@ public class SpontaneousHelpResources {
 	// Post a new spontaneous help proposition
 	@PostMapping("/postSpontHelp")
 	public void postSpontaneousHelp(@RequestBody SpontaneousHelp spontHelp) {
-		try {
-			Connection connection = DriverManager.getConnection(getDbUrl(), getDbUsername(), getDbPassword());
-			Statement stmt = connection.createStatement(); 
-			stmt.executeUpdate("INSERT INTO SpontaneousHelp VALUES (" + spontHelp.getId() +", " + spontHelp.getUserId() + ", " + spontHelp.getVolunteerId() + ", '" + spontHelp.getText() + "', '" + spontHelp.getStatus() + "', '" + spontHelp.getAdminComment() + "', '" + spontHelp.getTime() + "');");
-				
-			connection.close();
+		String sql = "INSERT INTO SpontaneousHelp (userId, volunteerId, title, description, status, date) VALUES (?, ?, ?, ?, ?, ?)";
+
+		try (Connection connection = DriverManager.getConnection(getDbUrl(), getDbUsername(), getDbPassword());
+			 PreparedStatement pstmt = connection.prepareStatement(sql)) {
+
+			// Configurar los parámetros del PreparedStatement
+			pstmt.setInt(1, spontHelp.getUserId());
+			pstmt.setInt(2, spontHelp.getVolunteerId());
+			pstmt.setString(3, spontHelp.getTitle());
+			pstmt.setString(4, spontHelp.getDescription());
+			pstmt.setString(5, spontHelp.getStatus());
+
+			// Convertir la fecha a un formato compatible con MySQL (YYYY-MM-DD)
+			pstmt.setDate(6, new java.sql.Date(spontHelp.getDate().getTime()));
+
+			// Ejecutar la consulta
+			pstmt.executeUpdate();
+			System.out.println("Spontaneous help created successfully!");
+
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.err.println("Error inserting spontaneous help: " + e.getMessage());
 		}
 	}
 }
