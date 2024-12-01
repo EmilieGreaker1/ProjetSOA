@@ -177,8 +177,9 @@ public class SpontaneousHelpResources {
 	public void updateSpontaneousHelp(@RequestBody SpontaneousHelp spontHelp) {
 		try (Connection connection = DriverManager.getConnection(getDbUrl(), getDbUsername(), getDbPassword())) {
 			// Usa un PreparedStatement para evitar problemas de formato y SQL Injection
-			String sql = "UPDATE SpontaneousHelp SET title = ?, description = ?, status = ?, date = ? WHERE id = ?";
-			PreparedStatement stmt = connection.prepareStatement(sql);
+			Statement stmt = connection.createStatement();
+			stmt.executeUpdate("UPDATE SpontaneousHelp SET title = '" + spontHelp.getTitle() + "', description = '" + spontHelp.getDescription() + "', status = '" + spontHelp.getStatus() + "', date = '" + spontHelp.getDate() + "' WHERE id = '" + spontHelp.getId() + "';");
+			/*PreparedStatement stmt = connection.prepareStatement(sql);
 
 			// Configura los parámetros
 			stmt.setString(1, spontHelp.getTitle());
@@ -190,7 +191,7 @@ public class SpontaneousHelpResources {
 			stmt.setInt(5, spontHelp.getId());
 
 			// Ejecuta la actualización
-			stmt.executeUpdate();
+			stmt.executeUpdate();*/
 
 		} catch (SQLException e) {
 			e.printStackTrace();

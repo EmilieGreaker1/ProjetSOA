@@ -46,18 +46,18 @@ public class LogInResources {
 		return dbPassword;
 	}
 	
-	@GetMapping("/{userID}+{password}")
-	public User getUser(@PathVariable("userID") int userID, @PathVariable("password") String pwd) {
+	@GetMapping("/{email}+{password}")
+	public User getUser(@PathVariable("email") String email, @PathVariable("password") String pwd) {
 		
-		// Get the user from the database based on name and password
+		// Get the user from the database based on email and password
 		try {
 			Connection connection = DriverManager.getConnection(getDbUrl(), getDbUsername(), getDbPassword());
 			Statement stmt = connection.createStatement(); 
-			ResultSet rs = stmt.executeQuery("select * from Users;");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM Users;");
 			
 			while(rs.next()) {
-				if (userID == rs.getInt(1) && pwd.equals(rs.getString(7))) {
-					return new User(userID, pwd, rs.getString(2), rs.getString(5), rs.getString(6), rs.getString(3), rs.getString(4));
+				if (email.equals(rs.getString(5)) && pwd.equals(rs.getString(7))) {
+					return new User(rs.getInt(1), pwd, rs.getString(2), email, rs.getString(6), rs.getString(3), rs.getString(4));
 				}
 			}
 			connection.close();
@@ -66,6 +66,6 @@ public class LogInResources {
 			e.printStackTrace();
 		}
 
-		return new User(0, "notFound", "notFound");
+		return null;
 	}
 }

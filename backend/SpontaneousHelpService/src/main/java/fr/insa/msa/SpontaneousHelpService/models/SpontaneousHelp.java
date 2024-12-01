@@ -14,10 +14,10 @@ public class SpontaneousHelp {
 	
 	public SpontaneousHelp() {}
 	
-	public SpontaneousHelp(int id, int volunteerId, String description) {
+	public SpontaneousHelp(int id, int volunteerId, String title) {
 		this.id = id;
         this.volunteerId = volunteerId;
-        this.description = description;
+        this.title = title;
         this.status = "pendingAdmin";
     }
 	

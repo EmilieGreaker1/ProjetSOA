@@ -174,23 +174,25 @@ public class RequestResources {
 	
 	// Update a request
 	@PutMapping("/updateRequest")
-	public void updateHelpRequest(@RequestBody Request spontHelp) {
+	public void updateHelpRequest(@RequestBody Request request) {
 		try (Connection connection = DriverManager.getConnection(getDbUrl(), getDbUsername(), getDbPassword())) {
 			// Usa un PreparedStatement para evitar problemas de formato y SQL Injection
-			String sql = "UPDATE Requests SET title = ?, description = ?, status = ?, date = ? WHERE id = ?";
+			Statement stmt = connection.createStatement();
+			stmt.executeUpdate("UPDATE Requests SET title = '" + request.getTitle() + "', description = '" + request.getDescription() + "', status = '" + request.getStatus() + "', date = '" + request.getDate() + "' WHERE id = '" + request.getId() + "';");
+			/*String sql = "UPDATE Requests SET title = ?, description = ?, status = ?, date = ? WHERE id = ?";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 
 			// Configura los parámetros
-			stmt.setString(1, spontHelp.getTitle());
-			stmt.setString(2, spontHelp.getDescription());
-			stmt.setString(3, spontHelp.getStatus());
+			stmt.setString(1, request.getTitle());
+			stmt.setString(2, request.getDescription());
+			stmt.setString(3, request.getStatus());
 
 			// Asegúrate de que la fecha sea un java.util.Date o java.sql.Timestamp
-			stmt.setTimestamp(4, new java.sql.Timestamp(spontHelp.getDate().getTime()));
-			stmt.setInt(5, spontHelp.getId());
+			stmt.setTimestamp(4, new java.sql.Timestamp(request.getDate().getTime()));
+			stmt.setInt(5, request.getId());
 
 			// Ejecuta la actualización
-			stmt.executeUpdate();
+			stmt.executeUpdate();*/
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -214,21 +216,21 @@ public class RequestResources {
 	
 	// Post a new request
 	@PostMapping("/postRequest")
-	public void postHelpRequest(@RequestBody Request spontHelp) {
+	public void postHelpRequest(@RequestBody Request request) {
 		String sql = "INSERT INTO Requests (userId, volunteerId, title, description, status, date) VALUES (?, ?, ?, ?, ?, ?)";
 
 		try (Connection connection = DriverManager.getConnection(getDbUrl(), getDbUsername(), getDbPassword());
 			 PreparedStatement pstmt = connection.prepareStatement(sql)) {
 
 			// Configurar los parámetros del PreparedStatement
-			pstmt.setInt(1, spontHelp.getUserId());
-			pstmt.setInt(2, spontHelp.getVolunteerId());
-			pstmt.setString(3, spontHelp.getTitle());
-			pstmt.setString(4, spontHelp.getDescription());
-			pstmt.setString(5, spontHelp.getStatus());
+			pstmt.setInt(1, request.getUserId());
+			pstmt.setInt(2, request.getVolunteerId());
+			pstmt.setString(3, request.getTitle());
+			pstmt.setString(4, request.getDescription());
+			pstmt.setString(5, request.getStatus());
 
 			// Convertir la fecha a un formato compatible con MySQL (YYYY-MM-DD)
-			pstmt.setDate(6, new java.sql.Date(spontHelp.getDate().getTime()));
+			pstmt.setDate(6, new java.sql.Date(request.getDate().getTime()));
 
 			// Ejecutar la consulta
 			pstmt.executeUpdate();

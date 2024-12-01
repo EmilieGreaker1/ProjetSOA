@@ -36,9 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             let url;
             if (type === "request") {
-                url = "http://localhost:8093/request/allWaitingRequests";
+                url = "http://localhost:8095/orc/allWaitingRequests";
             } else if (type === "spontaneous") {
-                url = "http://localhost:8092/spontHelp/allWaitingSpontaneousHelp";
+                url = "http://localhost:8095/orc/allWaitingSpontaneousHelp";
             } else {
                 console.error("Unknown type:", type);
                 return;
@@ -92,9 +92,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let url; // Define URL según el tipo
             if (view === "request") {
-                url = `http://localhost:8093/request/updateStatus`;
+                url = `http://localhost:8095/orc/updateStatusRequest`;
             } else if (view === "spontaneous") {
-                url = `http://localhost:8092/spontHelp/updateStatus`;
+                url = `http://localhost:8095/orc/updateStatusSpontHelp`;
             } else {
                 console.error("Unknown type:", type);
                 return;
@@ -143,9 +143,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let url; // Define URL según el tipo
             if (view === "request") {
-                url = `http://localhost:8093/request/updateStatus`;
+                url = `http://localhost:8095/orc/updateStatusRequest`;
             } else if (view === "spontaneous") {
-                url = `http://localhost:8092/spontHelp/updateStatus`;
+                url = `http://localhost:8095/orc/updateStatusSpontHelp`;
             } else {
                 console.error("Unknown type:", type);
                 return;
@@ -182,9 +182,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let url;
             if (type === "request") {
-                url = `http://localhost:8093/request/allAcceptedRequests`;
+                url = `http://localhost:8095/orc/allAcceptedRequests`;
             } else if (type === "spontaneous") {
-                url = `http://localhost:8092/spontHelp/allAcceptedSpontaneousHelp`;
+                url = `http://localhost:8095/orc/allAcceptedSpontaneousHelp`;
             } else {
                 console.error("Unknown type:", type);
                 return;

@@ -40,7 +40,7 @@ document.getElementById("signupForm").addEventListener("submit", async function 
 
         // Send POST request with the retrieved URL
         //const response = await fetch(`${baseUrl}/signup`, {
-         const response = await fetch(`http://localhost:8088/signup`, {
+         const response = await fetch(`http://localhost:8095/orc/signup`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

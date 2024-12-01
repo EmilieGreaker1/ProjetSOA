@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Load waiting requests into the left panel table
     async function loadPendingRequests() {
         try {
-            const response = await fetch("http://localhost:8092/spontHelp/allAcceptedSpontaneousHelp");
+            const response = await fetch("http://localhost:8095/orc/allAcceptedSpontaneousHelp");
             // TODO PROBLEM - we need to show all accepted HelpRequests and Spontaneous Requests cuz Volunteers can be a volunteer as well
             const items = await response.json();
             // console.log(`API Response:`, items);
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("PARTE 2 - id request: " + requestId + "volunteerId: " + volID);
 
             // Send request PUT
-            const putResponse = await fetch(`http://localhost:8092/spontHelp/updateVolunteer`, {
+            const putResponse = await fetch(`http://localhost:8095/orc/updateVolunteerSpontHelp`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(updatedRequest),
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
     async function loadVolunteerAcceptedMissions() {
         try {
 
-            const response = await fetch(`http://localhost:8092/spontHelp/volunteer+${volID}`);
+            const response = await fetch(`http://localhost:8095/orc/allSpontHelpOfVolunteer+${volID}`);
             if (!response.ok) {
                 console.error("Failed to fetch missions:", response.status, response.statusText);
                 return;
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // console.log("PARTE 2 - id request: " + requestId + "volunteerId: " + volID);
 
             // Send request PUT
-            const putResponse = await fetch(`http://localhost:8092/spontHelp/updateStatus`, {
+            const putResponse = await fetch(`http://localhost:8095/orc/updateStatusSpontHelp`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(updatedRequest),
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
     async function loadVolunteerSpontaneousRequest() {
         try {
 
-            const response = await fetch(`http://localhost:8092/spontHelp/user+${userID}`);
+            const response = await fetch(`http://localhost:8095/orc/allSpontHelpOfUser+${userID}`);
             if (!response.ok) {
                 console.error("Failed to fetch missions:", response.status, response.statusText);
                 return;
@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 status: "pendingAdmin" // Cambiar a pendingAdmin si está confirmado
             };
 
-            const response = await fetch(`http://localhost:8092/spontHelp/updateSpontHelp`, {
+            const response = await fetch(`http://localhost:8095/orc/updateSpontHelp`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(updatedRequest),
@@ -280,7 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 adminComment: reason.trim(),
             };
 
-            const response = await fetch(`http://localhost:8092/spontHelp/updateStatus`, {
+            const response = await fetch(`http://localhost:8095/orc/updateStatusSpontHelp`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(updatedRequest),
@@ -333,7 +333,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         try {
-            const response = await fetch("http://localhost:8092/spontHelp/postSpontHelp", {
+            const response = await fetch("http://localhost:8095/orc/postSpontHelp", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(spontaneousRequest),

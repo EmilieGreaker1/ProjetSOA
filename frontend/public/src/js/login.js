@@ -2,13 +2,13 @@ document.getElementById("loginForm").addEventListener("submit", async function (
     event.preventDefault();
 
     const formData = {
-        userid: document.getElementById("userid").value,
+        email: document.getElementById("email").value,
         password: document.getElementById("password").value
     };
 
     try {
         // Send GET request with the retrieved URL
-        const response = await fetch(`http://localhost:8090/login/` + formData.userid + "+" + formData.password, {
+        const response = await fetch(`http://localhost:8095/orc/` + formData.email + "+" + formData.password, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -22,7 +22,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
             // Usa el userType del servidor para decidir la redirección
             const userType = jsonLoginResp.userType; // Asegúrate de que esta propiedad exista en la respuesta
 
-            if (jsonLoginResp.userId !== 0) {
+            if (jsonLoginResp != null) {
                 if (userType === "Admin") {
                     window.location.href = "../../views/AdmViewRequests.html";
                 } else if (userType === "Volunteer") {
