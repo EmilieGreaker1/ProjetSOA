@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const user = "Volunteer"; // Replace this with the logged-in user's name dynamically
-    const volID = 999;
-    const userID = 999;
-    // TODO We need to get the dynamic username and volunteerID ... idk how, but maybe with the orchestator we can... idk
-    // Right now it works, but it's a constant.
+    const userData = JSON.parse(localStorage.getItem('user'));
+    const user = userData.nickName;
+    const volID = userData.userID;
 
     document.getElementById("welcomeMessage").textContent = `Welcome, ${user}`;
 
@@ -170,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
     async function loadVolunteerSpontaneousRequest() {
         try {
 
-            const response = await fetch(`http://localhost:8095/orc/allSpontHelpOfUser+${userID}`);
+            const response = await fetch(`http://localhost:8095/orc/allSpontHelpOfVolunteer+${volID}`);
             if (!response.ok) {
                 console.error("Failed to fetch missions:", response.status, response.statusText);
                 return;
@@ -324,8 +322,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Construir el objeto para enviar al servidor
         const spontaneousRequest = {
-            userId: userID, // Asegúrate de tener el userID disponible en el script
-            volunteerId: 0, // Puedes asignar un valor predeterminado como 0
+            userId: 0,
+            volunteerId: volID,
             title: title,
             description: description,
             status: "pendingAdmin", // Estado inicial

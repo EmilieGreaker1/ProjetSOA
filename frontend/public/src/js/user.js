@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const user = "User"; // Replace this with the logged-in user's name dynamically
-    const userID = 1;
-    // TODO We need to get the dynamic username and volunteerID ... idk how, but maybe with the orchestator we can... idk
-    // Right now it works, but it's a constant.
+    const userData = JSON.parse(localStorage.getItem('user'));
+    const user = userData.nickName;
+    const userID = userData.userID;
 
     document.getElementById("welcomeMessage").textContent = `Welcome, ${user}`;
 
@@ -11,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /**********************************************************************
-     ************************ VIEW MY REQUEST **************************
+     ************************ VIEW MY REQUESTS **************************
      ***********************************************************************/
 
     const requestTitle = document.getElementById("requestTitle");
@@ -26,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     async function loadHelpRequest() {
         try {
 
-            const response = await fetch(`http://localhost:8093/request/user+${userID}`);
+            const response = await fetch(`http://localhost:8095/orc/allRequestsOfUser+${userID}`);
             if (!response.ok) {
                 console.error("Failed to fetch missions:", response.status, response.statusText);
                 return;
@@ -96,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     status: "pendingAdmin" // Cambiar a pendingAdmin si está confirmado
                 };
 
-                const response = await fetch(`http://localhost:8093/request/updateRequest`, {
+                const response = await fetch(`http://localhost:8095/orc/updateRequest`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(updatedRequest),
@@ -136,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     adminComment: reason.trim(),
                 };
 
-                const response = await fetch(`http://localhost:8093/request/updateStatus`, {
+                const response = await fetch(`http://localhost:8095/orc/updateStatusRequest`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(updatedRequest),
@@ -158,8 +157,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    /************************************************************************
-     ************************* CREATE SPONTANEOUS ***************************
+    /***********************************************************************
+     ************************* CREATE REQUEST ******************************
      ***********************************************************************/
 
     const createHelpRequestButton = document.querySelector("#btn-create-request");
@@ -179,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             // Construir el objeto para enviar al servidor
-            const spontaneousRequest = {
+            const request = {
                 userId: userID, // Asegúrate de tener el userID disponible en el script
                 volunteerId: 0, // Puedes asignar un valor predeterminado como 0
                 title: title,
@@ -189,10 +188,10 @@ document.addEventListener("DOMContentLoaded", () => {
             };
 
             try {
-                const response = await fetch("http://localhost:8093/request/postRequest", {
+                const response = await fetch("http://localhost:8095/orc/postRequest", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(spontaneousRequest),
+                    body: JSON.stringify(request),
                 });
 
                 if (response.ok) {

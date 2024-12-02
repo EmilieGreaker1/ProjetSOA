@@ -51,6 +51,17 @@ document.getElementById("signupForm").addEventListener("submit", async function 
         if (response.ok) {
             // alert("User registered successfully!");
 
+            // Login this newly created user to redirect them
+            const response = await fetch(`http://localhost:8095/orc/` + formData.email + "+" + formData.password, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+
+            const jsonUserResp = await response.json();
+            localStorage.setItem('user', jsonUserResp);
+
             if(document.getElementById("userType").value === "Admin") {
                 //alert("Redirecting admin...");
                 window.location.href = "../../views/AdmViewRequests.html";

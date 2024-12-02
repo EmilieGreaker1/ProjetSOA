@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const user = "Admin"; // Replace this with the logged-in user's name dynamically
+    const userData = JSON.parse(localStorage.getItem('user'));
+    const user = userData.nickName;
     document.getElementById("welcomeMessage").textContent = `Welcome, ${user}`;
 
     const requestsTableBody = document.querySelector("#requestsTable-admin tbody");
