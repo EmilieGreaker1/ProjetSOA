@@ -174,7 +174,7 @@ public class RequestResources {
 	
 	// Update a request
 	@PutMapping("/updateRequest")
-	public void updateHelpRequest(@RequestBody Request request) {
+	public void updateRequest(@RequestBody Request request) {
 		try (Connection connection = DriverManager.getConnection(getDbUrl(), getDbUsername(), getDbPassword())) {
 			// Usa un PreparedStatement para evitar problemas de formato y SQL Injection
 			Statement stmt = connection.createStatement();
@@ -216,7 +216,7 @@ public class RequestResources {
 	
 	// Post a new request
 	@PostMapping("/postRequest")
-	public void postHelpRequest(@RequestBody Request request) {
+	public void postRequest(@RequestBody Request request) {
 		String sql = "INSERT INTO Requests (userId, volunteerId, title, description, status, date) VALUES (?, ?, ?, ?, ?, ?)";
 
 		try (Connection connection = DriverManager.getConnection(getDbUrl(), getDbUsername(), getDbPassword());
@@ -234,11 +234,11 @@ public class RequestResources {
 
 			// Ejecutar la consulta
 			pstmt.executeUpdate();
-			System.out.println("Help Request created successfully!");
+			System.out.println("Request created successfully!");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.err.println("Error inserting Help Request: " + e.getMessage());
+			System.err.println("Error inserting Request: " + e.getMessage());
 		}
 	}
 }

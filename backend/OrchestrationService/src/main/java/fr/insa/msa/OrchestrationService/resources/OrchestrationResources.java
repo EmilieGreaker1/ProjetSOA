@@ -243,5 +243,65 @@ public class OrchestrationResources {
  	public void postHelpRequest(@RequestBody Request request) {
  		restTemplate.postForObject("http://request-service/request/postRequest", request, Request.class);
  	}
+ 	
+ 	// Review block
+ 	
+ 	// Get review by id
+ 	@GetMapping("/getReview/{id}")
+ 	public Review getReview(@PathVariable("id") int id) {
+ 		return restTemplate.getForObject("http://review-service/review/" + id, Review.class);
+ 	}
+ 	
+ 	//Get all reviews of this volunteer
+ 	@GetMapping("/allReviewsOfVol/{volId}")
+ 	public List<Review> getAllReviewsOnVol(@PathVariable("volId") int volId) {
+ 		ResponseEntity<List<Review>> response = restTemplate.exchange(
+		        "http://review-service/review/vol/" + volId,          
+		        HttpMethod.GET,
+		        null, // Request body
+		        new ParameterizedTypeReference<List<Review>>() {}
+		    );
+		    return response.getBody();
+ 	}
+ 	
+ 	//Get all reviews made by this user
+ 	@GetMapping("/allReviewsOfUser/{userId}")
+ 	public List<Review> getAllReviewsByUser(@PathVariable("userId") int userId) {
+ 		ResponseEntity<List<Review>> response = restTemplate.exchange(
+		        "http://review-service/review/userId/" + userId,          
+		        HttpMethod.GET,
+		        null, // Request body
+		        new ParameterizedTypeReference<List<Review>>() {}
+		    );
+		    return response.getBody();
+ 	}
+ 	
+ 	// Update a review
+ 	@PutMapping("/updateReview")
+ 	public void updateReview(@RequestBody Review review) {
+ 		restTemplate.exchange(
+		        "http://review-service/review/updateReview",          
+		        HttpMethod.PUT,
+		        new HttpEntity(review), // Request body
+		        new ParameterizedTypeReference<Review>() {}
+		    );
+ 	}
+ 	
+ 	// Post a new review
+ 	@PostMapping("/postReview")
+ 	public void postHelpRequest(@RequestBody Review review) {
+ 		restTemplate.postForObject("http://review-service/review/postReview", review, Review.class);
+ 	}
+ 	
+ 	// Method to delete a review
+ 	@DeleteMapping("/deleteReview/{id}")
+    public void deleteReviewById(@PathVariable String id) {
+ 		restTemplate.exchange(
+		        "http://review-service/review/deleteReview/" + id,          
+		        HttpMethod.DELETE,
+		        null, // Request body
+		        String.class
+		    );
+    }
 	
 }
